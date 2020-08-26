@@ -1,0 +1,20 @@
+FROM alpine
+
+# run, COPY, ADD, FROM GENERAN CAPAS PARA QUE LA IMAGEN CREZCA DE MANERA GIGANTESCA
+# RUN mkdir -p /app
+
+# crea el directorio y se mueve a ese directorio
+WORKDIR /app
+
+# add VS cOPY
+# CON ADD SE PUEDE ENVIAR UNA URL PARA DESCARGAR
+COPY myapp.sh /app
+
+# Ejecuta comandos y el amperson une mas comandos, se instala dependencias
+RUN ls /app && chmod +x myapp.sh && apk add --update bash
+
+#CMD Y ENTRIPOINTS SON LO MISMO
+#EN CMD PUEDES MANDAR PARAMETROS
+#comando por defecto, que mantiene el contenedor arriba
+#ENTRYPOINT [ "bash", "myapp.sh" ]
+CMD [ "./myapp.sh" ]

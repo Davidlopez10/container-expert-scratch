@@ -12,6 +12,7 @@
 # :${VARIABLE:-"default"}
 
 
+
 count=0
 while true;do
   echo "[${count}] Hola Container bootcamp experts! 🐳 🤓"
