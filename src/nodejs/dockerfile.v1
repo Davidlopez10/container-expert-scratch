@@ -1,0 +1,12 @@
+#Validar si la app necesita node version
+FROM node:12-alpine
+
+WORKDIR /app/
+
+COPY . .
+
+RUN npm install && npm install -g pm2
+#ES DOCUMENTACION, SE PUEDE UTILIZAR
+EXPOSE 8080
+
+ENTRYPOINT [ "pm2-docker", "app.js" ]

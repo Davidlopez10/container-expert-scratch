@@ -2,6 +2,7 @@
 
 - [Container Expert Source](#container-expert-source)
 - [Detalles](#detalles)
+- [Swarm](#swarm)
 - [VS Code](#vs-code)
 
 <!-- /TOC -->
@@ -9,7 +10,7 @@
 # Container Expert Source
 ![1](./docs/images/DockerBootcampv2.0-expert.png)
 
-Todos los archivos para iniciarnos con Docker y Kubernetes en nuestro **"Container Bootcamp v2.0 - Expert"**
+n nuestro **"Container Bootcamp v2.0 - Expert"**
 
 
 # Detalles
@@ -41,6 +42,8 @@ Cada app viene acompanado de exactamente lo mismo y se comportaran de la misma m
     ```
 
 
+# Swarm
+
 ---
 # VS Code
 
@@ -49,5 +52,6 @@ mi VS Code tiene los siguientes add-onds (plugins):
 - better comments - Aaron Bond
 - Docker - microsoft
 - Kubernetes - microsoft
+- editorconfig
 - [THEME]: Andromeda Italic Border
 - [File Icons Themes]: VSCode Icons

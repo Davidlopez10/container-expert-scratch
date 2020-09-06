@@ -19,19 +19,26 @@ const app = express();
 
 require("./extras/health")(app)
 //? MID
-var MSG = process.env.MSG || " 📦 Container ";
-const hostname = os.hostname()
-app.get('/api', async function (req, res, next) {
-	let NEXT_URL = process.env.NEXT_URL
-	if (NEXT_URL) {
-		const resp = await fetch(NEXT_URL, {
-			headers: { 'Content-Type': 'application/json' }
+
+var MSG=process.env.MSG || " 📦 Container ";
+
+const hostname=os.hostname()
+
+
+
+app.get('/api',  async function(req, res, next) {
+	let NEXT_URL=process.env.NEXT_URL
+	if (NEXT_URL){
+		const resp= await fetch(NEXT_URL ,{
+			headers: {'Content-Type': 'application/json'}
 		}
 		)
 		const yeison = await resp.json();
 		res.json({ "msg": `${MSG + yeison.msg}`, "hostname": `${hostname}` })
 	} else {
 		res.json({ "msg": `${MSG}`, "hostname": `${hostname}` })
+	}else{
+		res.json({"msg": `${MSG}`, "hostname":`${hostname}`} )
 	}
 	res.end
 })

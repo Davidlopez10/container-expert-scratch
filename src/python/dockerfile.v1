@@ -1,0 +1,14 @@
+# UTILIZA UNA IMAGEN INICIAL QUE YA TENGA INSTALADO PYTHON
+FROM python:3.7-alpine
+
+WORKDIR /app
+
+COPY requirements.txt /app
+
+# Instala las dependencias que estan en el archivo
+RUN pip3 install -r requirements.txt
+
+COPY . /app
+
+#levanta la app
+ENTRYPOINT ["python3", "app.py"]
