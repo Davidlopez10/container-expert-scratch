@@ -3,6 +3,7 @@
 const express = require('express');
 const request = require('request')
 const fetch = require('node-fetch')
+const os = require('os');
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
@@ -18,31 +19,25 @@ const app = express();
 
 require("./extras/health")(app)
 //? MID
-
-var MSG=process.env.MSG || " 📦 Container ";
-
-const hostname=process.env.HOSTNAME || "";
-
-
-
-app.get('/api',  async function(req, res, next) {
-	let NEXT_URL=process.env.NEXT_URL
-	if (NEXT_URL){
-		const resp= await fetch(NEXT_URL ,{
-			headers: {'Content-Type': 'application/json'}
+var MSG = process.env.MSG || " 📦 Container ";
+const hostname = os.hostname()
+app.get('/api', async function (req, res, next) {
+	let NEXT_URL = process.env.NEXT_URL
+	if (NEXT_URL) {
+		const resp = await fetch(NEXT_URL, {
+			headers: { 'Content-Type': 'application/json' }
 		}
 		)
 		const yeison = await resp.json();
-		res.json({"msg": `${MSG+yeison.msg}`, "hostname":`${hostname}`} )
+		res.json({ "msg": `${MSG + yeison.msg}`, "hostname": `${hostname}` })
+	} else {
+		res.json({ "msg": `${MSG}`, "hostname": `${hostname}` })
 	}
 	res.end
 })
-
-
-
-app.get('/',(req,res) => {
+app.get('/', (req, res) => {
 	console.log("/root")
-  res.send(`<div style="text-align: center;"> <h1>${MSG}</h1><br><h3>NodeJS</h3> </div>`);
+	res.send(`<div style="text-align: center;"> <h1>${MSG}</h1><br><h3>NodeJS</h3> </div>`);
 })
 
 
